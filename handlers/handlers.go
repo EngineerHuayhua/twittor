@@ -18,6 +18,9 @@ func Manejadores() {
 
 	// EndPoint /registro que llego un tipo POST pasa el control al middLew y este revisa la BD si BD es ok devuel el control al routers.Registro
 	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
+	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
+	// <-./middlew/validoJWT.go
+	router.HandleFunc("/verperfil", middlew.ChequeoBD(middlew.ValidoJWT(router.VerPerfil))).Methods("GET")
 
 	// Si no existe el puerto lo crea forzandolo
 	PORT := os.Getenv("PORT")
