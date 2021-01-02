@@ -20,7 +20,7 @@ func Manejadores() {
 	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
 	// <-./middlew/validoJWT.go
-	router.HandleFunc("/verperfil", middlew.ChequeoBD(middlew.ValidoJWT(router.VerPerfil))).Methods("GET")
+	router.HandleFunc("/verperfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.VerPerfil))).Methods("GET")
 
 	// Si no existe el puerto lo crea forzandolo
 	PORT := os.Getenv("PORT")
