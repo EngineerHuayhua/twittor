@@ -19,7 +19,7 @@ var IDUsuario string
 
 // ProcesoToken procesa token para extraer sus valores
 func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
-	miClave := []byte("MasterdelDesarrollo_grupodeFacebook")
+	miClave := []byte("MastersdelDesarrollo_grupodeFacebook")
 	claims := &models.Claim{}
 
 	// Split divide el texto a partir de tk delimitado por Bearer y esta se vuelve en vector de 2 indices
@@ -46,7 +46,7 @@ func ProcesoToken(tk string) (*models.Claim, bool, string, error) {
 		return claims, encontrado, IDUsuario, nil
 	}
 	if !tkn.Valid {
-		return claims, false, string(""), errors.New("Token Inválido")
+		return claims, false, string(""), errors.New("token Inválido")
 	}
 
 	return claims, false, string(""), err

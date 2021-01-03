@@ -20,7 +20,14 @@ func Manejadores() {
 	router.HandleFunc("/registro", middlew.ChequeoBD(routers.Registro)).Methods("POST")
 	router.HandleFunc("/login", middlew.ChequeoBD(routers.Login)).Methods("POST")
 	// <-./middlew/validoJWT.go
+	// Primero verifica la Basea de Datos y luego el JWT
 	router.HandleFunc("/verperfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.VerPerfil))).Methods("GET")
+	// <-./routers/modificarPerfil.go
+	router.HandleFunc("/modificarPerfil", middlew.ChequeoBD(middlew.ValidoJWT(routers.ModificarPerfil))).Methods("PUT")
+	// <-./routers/graboTweet.go
+	router.HandleFunc("/tweet", middlew.ChequeoBD(middlew.ValidoJWT(routers.GraboTweet))).Methods("POST")
+	// <-./routers/leoTweets.go
+	router.HandleFunc("/leoTweets", middlew.ChequeoBD(middlew.ValidoJWT(routers.LeoTweets))).Methods("GET")
 
 	// Si no existe el puerto lo crea forzandolo
 	PORT := os.Getenv("PORT")

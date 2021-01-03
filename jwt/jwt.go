@@ -11,7 +11,7 @@ import (
 // GeneroJWT genera el encriptado con JWT
 func GeneroJWT(t models.Usuario) (string, error) {
 	// creamos una nueva clave privada
-	miClave := []byte("MastersDelDesarrollo_grupodeFacebook")
+	miClave := []byte("MastersdelDesarrollo_grupodeFacebook")
 
 	// establecemos los privilegios y jamas se debe guardar el password del modelo de usuario en jwt
 	payload := jwt.MapClaims{
